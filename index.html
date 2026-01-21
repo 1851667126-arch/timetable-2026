@@ -374,6 +374,10 @@
                         <div class="course-time">⏰ 每周四 12:30 - 14:00</div>
                         <div class="course-time">👨‍🏫 陈文妍老师</div>
                         <div class="course-time">📍 李兆基楼 LT7</div>
+                        <div class="course-time" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <strong>📊 考核构成：</strong><br>
+                            10% 课堂出勤 + 30% 导修报告（15% 口头 + 15% 文字）+ 60% 期末论文
+                        </div>
                     </div>
                     
                     <div class="course-card ordinary">
@@ -381,6 +385,10 @@
                         <div class="course-time">⏰ 每周四 18:30 - 21:15</div>
                         <div class="course-time">👨‍🏫 贺喜老师</div>
                         <div class="course-time">📍 李兆基楼 LT2</div>
+                        <div class="course-time" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <strong>📊 考核构成：</strong><br>
+                            10% 课堂出勤 + 20% 导修及课堂讨论 + 70% 期末论文
+                        </div>
                     </div>
                     
                     <div class="course-card hk">
@@ -388,6 +396,10 @@
                         <div class="course-time">⏰ 每周五 18:30 - 20:15</div>
                         <div class="course-time">👨‍🏫 马木池老师</div>
                         <div class="course-time">📍 康本园405</div>
+                        <div class="course-time" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <strong>📊 考核构成：</strong><br>
+                            10% 课堂出勤 + 30% 田野考察报告 + 60% 期末论文
+                        </div>
                     </div>
                     
                     <div class="course-card required">
@@ -395,6 +407,10 @@
                         <div class="course-time">⏰ 每周六 10:30 - 13:15</div>
                         <div class="course-time">👨‍🏫 卜永坚老师</div>
                         <div class="course-time">📍 李兆基楼 LT1</div>
+                        <div class="course-time" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <strong>📊 考核构成：</strong><br>
+                            2 × 15% In-class Assignment + 70% Semester Paper
+                        </div>
                     </div>
                 </div>
                 
@@ -500,7 +516,7 @@
                             <div class="timeline-date">3月31日（周三）</div>
                             <div class="timeline-content">
                                 <strong>📍 西贡滘考察</strong><br>
-                                香港节日课程考察活动
+                                香港传统的中国节日 考察活动
                             </div>
                         </div>
                     </div>
@@ -582,7 +598,7 @@
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <strong>🚶 考察活动</strong><br>
-                            • 长洲考察（2月1日）<br>
+                            • 广州/长洲考察（2月1日）<br>
                             • 上水丙崗村考察×2（2月28日、3月4日）<br>
                             • 大埔墟考察（3月15日）<br>
                             • 普通人课程考察（3月22日）<br>
@@ -653,7 +669,15 @@
             },
             { date: '2026-03-19', title: '3B小组导修报告', type: 'event' },
             { date: '2026-03-22', title: '普通人课程考察', type: 'event' },
-            { date: '2026-03-26', title: '个人书面报告截止', type: 'deadline' },
+            { 
+                date: '2026-03-26', 
+                title: '个人书面报告截止', 
+                type: 'deadline',
+                details: {
+                    requirement: '至少1200字',
+                    course: '近代中国的普通人'
+                }
+            },
             { 
                 date: '2026-03-31', 
                 title: '西贡滘考察', 
@@ -665,10 +689,43 @@
                 }
             },
             { date: '2026-04-02', title: '田野工作坊', type: 'event' },
-            { date: '2026-04-09', title: '田野报告截止', type: 'deadline' },
-            { date: '2026-04-19', title: '必修课期末论文截止', type: 'deadline' },
-            { date: '2026-04-20', title: '城市史期末论文截止', type: 'deadline' },
-            { date: '2026-05-01', title: '香港节日课程期末论文截止', type: 'deadline' }
+            { 
+                date: '2026-04-09', 
+                title: '田野报告截止', 
+                type: 'deadline',
+                details: {
+                    requirement: '至少1200字',
+                    course: '近代中国的普通人'
+                }
+            },
+            { 
+                date: '2026-04-19', 
+                title: '必修课期末论文截止', 
+                type: 'deadline',
+                details: {
+                    requirement: '至少4000个英文单词（包括脚注）',
+                    topic: 'A Critique of Four Shanghai Lil Films',
+                    course: '必修课'
+                }
+            },
+            { 
+                date: '2026-04-20', 
+                title: '城市史期末论文截止', 
+                type: 'deadline',
+                details: {
+                    requirement: '6000-8000字',
+                    course: '城市空间的塑造及其内涵'
+                }
+            },
+            { 
+                date: '2026-05-01', 
+                title: '香港节日课程期末论文截止', 
+                type: 'deadline',
+                details: {
+                    requirement: '至少5000字',
+                    course: '香港传统的中国节日'
+                }
+            }
         ];
 
         // 显示今日课程
@@ -729,9 +786,15 @@
                     const detailsHTML = event.details ? `
                         <div class="countdown-details" id="details-${index}">
                             <div class="detail-info">
-                                <strong>📍 集合地点：</strong>${event.details.location}<br>
-                                <strong>⏰ 集合时间：</strong>${event.details.time}<br>
-                                <strong>💡 备注：</strong>${event.details.note}
+                                ${event.type === 'event' ? `
+                                    <strong>📍 集合地点：</strong>${event.details.location}<br>
+                                    <strong>⏰ 集合时间：</strong>${event.details.time}<br>
+                                    <strong>💡 备注：</strong>${event.details.note}
+                                ` : `
+                                    <strong>📚 课程：</strong>${event.details.course}<br>
+                                    <strong>📝 要求：</strong>${event.details.requirement}
+                                    ${event.details.topic ? `<br><strong>📖 主题：</strong>${event.details.topic}` : ''}
+                                `}
                             </div>
                         </div>
                     ` : '';
