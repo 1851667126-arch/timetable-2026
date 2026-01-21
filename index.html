@@ -12,117 +12,126 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            padding: 0;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 0;
+            box-shadow: none;
             overflow: hidden;
+            min-height: 100vh;
         }
         
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
+            padding: max(20px, env(safe-area-inset-top)) 20px 25px 20px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 1.6em;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
         .header p {
-            opacity: 0.9;
-            font-size: 1.1em;
+            opacity: 0.95;
+            font-size: 1em;
         }
         
         /* 今日课程卡片 */
         .today-section {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            padding: 25px;
-            margin: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+            padding: 20px 16px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
             animation: fadeIn 0.5s ease-in;
         }
         
         .today-title {
-            font-size: 1.5em;
-            margin-bottom: 15px;
+            font-size: 1.3em;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-weight: 600;
         }
         
         .today-courses {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 0;
         }
         
         .course-item {
-            padding: 10px;
+            padding: 12px;
             margin: 8px 0;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            border-left: 4px solid #fff;
+            border-radius: 10px;
+            border-left: 3px solid #fff;
+            font-size: 0.95em;
+            line-height: 1.6;
         }
         
         .no-class {
-            font-size: 1.2em;
-            padding: 20px;
+            font-size: 1.1em;
+            padding: 16px;
             text-align: center;
-            opacity: 0.9;
+            opacity: 0.95;
         }
         
         /* 倒计时卡片 */
         .countdown-section {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
-            padding: 20px;
-            margin: 0 20px 20px 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+            padding: 20px 16px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
         }
         
         .countdown-title {
             font-size: 1.3em;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-weight: 600;
         }
         
         .countdown-item {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            padding: 15px;
+            padding: 14px;
             margin: 10px 0;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
         }
         
-        .countdown-item:hover {
+        .countdown-item:active {
             background: rgba(255, 255, 255, 0.3);
-            transform: translateX(5px);
+            transform: scale(0.98);
         }
         
         .countdown-item-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
         
         .countdown-details {
@@ -134,32 +143,26 @@
         
         .countdown-details.expanded {
             max-height: 300px;
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .detail-info {
             background: rgba(255, 255, 255, 0.15);
             padding: 12px;
-            border-radius: 8px;
-            margin-top: 8px;
-            line-height: 1.6;
-        }
-        
-        .expand-icon {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-            margin-left: 10px;
-        }
-        
-        .expand-icon.rotated {
-            transform: rotate(180deg);
+            border-radius: 10px;
+            margin-top: 0;
+            line-height: 1.8;
+            font-size: 0.95em;
         }
         
         .countdown-days {
-            font-size: 2em;
+            font-size: 1.6em;
             font-weight: bold;
+            white-space: nowrap;
+            min-width: 60px;
+            text-align: right;
         }
         
         .countdown-days.urgent {
@@ -168,8 +171,9 @@
         }
         
         .countdown-label {
-            font-size: 0.9em;
+            font-size: 0.85em;
             opacity: 0.9;
+            margin-top: 2px;
         }
         
         @keyframes pulse {
@@ -182,20 +186,32 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .expand-icon {
+            font-size: 1em;
+            transition: transform 0.3s ease;
+            margin-left: 6px;
+        }
+        
+        .expand-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
         .content {
-            padding: 30px;
+            padding: 20px 16px;
+            padding-bottom: max(20px, env(safe-area-inset-bottom));
         }
         
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         
         .section-title {
-            font-size: 1.5em;
+            font-size: 1.4em;
             color: #667eea;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+            font-weight: 600;
         }
         
         .weekly-schedule {
@@ -206,14 +222,15 @@
         .course-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border-radius: 12px;
-            padding: 20px;
-            border-left: 5px solid;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 16px;
+            border-left: 4px solid;
+            transition: transform 0.2s, box-shadow 0.2s;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .course-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .course-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .course-card.hk { border-left-color: #ff6b6b; }
@@ -222,26 +239,29 @@
         .course-card.required { border-left-color: #f9ca24; }
         
         .course-name {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-bottom: 10px;
             color: #2d3436;
+            line-height: 1.4;
         }
         
         .course-time {
             color: #636e72;
-            font-size: 0.95em;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 4px;
         }
         
         .timeline {
             position: relative;
-            padding-left: 30px;
+            padding-left: 24px;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
-            left: 10px;
+            left: 8px;
             top: 0;
             bottom: 0;
             width: 2px;
@@ -250,33 +270,36 @@
         
         .timeline-item {
             position: relative;
-            margin-bottom: 25px;
-            padding-left: 20px;
+            margin-bottom: 20px;
+            padding-left: 16px;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -24px;
+            left: -20px;
             top: 5px;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: white;
-            border: 3px solid #667eea;
+            border: 2px solid #667eea;
         }
         
         .timeline-date {
-            font-weight: bold;
+            font-weight: 600;
             color: #667eea;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            font-size: 0.95em;
         }
         
         .timeline-content {
             background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 10px;
             border-left: 3px solid #667eea;
+            font-size: 0.9em;
+            line-height: 1.6;
         }
         
         .deadline {
@@ -289,50 +312,73 @@
         }
         
         .month-section {
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         
         .month-title {
-            font-size: 1.3em;
+            font-size: 1.2em;
             color: #764ba2;
-            margin-bottom: 15px;
-            padding: 10px;
+            margin-bottom: 12px;
+            padding: 10px 12px;
             background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-            border-radius: 8px;
+            border-radius: 10px;
+            font-weight: 600;
         }
         
         .legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+            padding: 12px;
             background: #f8f9fa;
-            border-radius: 8px;
+            border-radius: 10px;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.85em;
         }
         
         .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            flex-shrink: 0;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 428px) {
             .header h1 {
-                font-size: 1.5em;
+                font-size: 1.4em;
             }
-            .content {
-                padding: 20px;
+            
+            .header p {
+                font-size: 0.9em;
             }
-            .countdown-item {
+            
+            .today-title, .countdown-title {
+                font-size: 1.2em;
+            }
+            
+            .section-title {
+                font-size: 1.3em;
+            }
+            
+            .countdown-item-header {
                 flex-direction: column;
-                gap: 10px;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .countdown-days {
+                font-size: 1.4em;
+                align-self: flex-end;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
             }
         }
     </style>
