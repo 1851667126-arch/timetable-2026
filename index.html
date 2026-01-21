@@ -110,9 +110,51 @@
             padding: 15px;
             margin: 10px 0;
             border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+        
+        .countdown-item-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        
+        .countdown-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+        
+        .countdown-details.expanded {
+            max-height: 300px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .detail-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        
+        .expand-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+        }
+        
+        .expand-icon.rotated {
+            transform: rotate(180deg);
         }
         
         .countdown-days {
@@ -457,7 +499,7 @@
                         <div class="timeline-item">
                             <div class="timeline-date">3月31日（周三）</div>
                             <div class="timeline-content">
-                                <strong>📍 西贡墟考察</strong><br>
+                                <strong>📍 西贡滘考察</strong><br>
                                 香港节日课程考察活动
                             </div>
                         </div>
@@ -540,11 +582,11 @@
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <strong>🚶 考察活动</strong><br>
-                            • 广州/长洲考察（2月1日）<br>
+                            • 长洲考察（2月1日）<br>
                             • 上水丙崗村考察×2（2月28日、3月4日）<br>
                             • 大埔墟考察（3月15日）<br>
                             • 普通人课程考察（3月22日）<br>
-                            • 西贡墟考察（3月31日）
+                            • 西贡滘考察（3月31日）
                         </div>
                     </div>
                 </div>
@@ -569,14 +611,59 @@
 
         // 重要事件（包括考察和截止日期）
         const events = [
-            { date: '2026-02-01', title: '广州/长洲考察', type: 'event' },
-            { date: '2026-02-28', title: '上水丙崗村考察（第1次）', type: 'event' },
-            { date: '2026-03-04', title: '上水丙崗村考察（第2次）', type: 'event' },
-            { date: '2026-03-15', title: '大埔墟考察', type: 'event' },
+            { 
+                date: '2026-02-01', 
+                title: '长洲考察', 
+                type: 'event',
+                details: {
+                    location: '中环5号码头（往长洲）',
+                    time: '8:30am',
+                    note: '请准时到达码头'
+                }
+            },
+            { 
+                date: '2026-02-28', 
+                title: '上水丙崗村考察（第1次）', 
+                type: 'event',
+                details: {
+                    location: '上水火车站大堂',
+                    time: '8:30am',
+                    note: '请从大堂集合'
+                }
+            },
+            { 
+                date: '2026-03-04', 
+                title: '上水丙崗村考察（第2次）', 
+                type: 'event',
+                details: {
+                    location: '上水火车站大堂',
+                    time: '9:30am',
+                    note: '请从大堂集合'
+                }
+            },
+            { 
+                date: '2026-03-15', 
+                title: '大埔墟考察', 
+                type: 'event',
+                details: {
+                    location: '大埔墟火车站（A出口）',
+                    time: '9:00am',
+                    note: '请从A出口集合'
+                }
+            },
             { date: '2026-03-19', title: '3B小组导修报告', type: 'event' },
             { date: '2026-03-22', title: '普通人课程考察', type: 'event' },
             { date: '2026-03-26', title: '个人书面报告截止', type: 'deadline' },
-            { date: '2026-03-31', title: '西贡墟考察', type: 'event' },
+            { 
+                date: '2026-03-31', 
+                title: '西贡滘考察', 
+                type: 'event',
+                details: {
+                    location: '西贡墟码头',
+                    time: '8:30am',
+                    note: '请准时到达码头'
+                }
+            },
             { date: '2026-04-02', title: '田野工作坊', type: 'event' },
             { date: '2026-04-09', title: '田野报告截止', type: 'deadline' },
             { date: '2026-04-19', title: '必修课期末论文截止', type: 'deadline' },
@@ -616,9 +703,8 @@
         // 计算倒计时
         function showCountdown() {
             const now = new Date();
-            now.setHours(0, 0, 0, 0); // 设置为今天0点
+            now.setHours(0, 0, 0, 0);
             
-            // 找出未来的事件
             const upcomingEvents = events
                 .map(event => {
                     const eventDate = new Date(event.date);
@@ -628,30 +714,60 @@
                 })
                 .filter(event => event.diffDays >= 0)
                 .sort((a, b) => a.diffDays - b.diffDays)
-                .slice(0, 3); // 只显示最近3个
+                .slice(0, 3);
 
             const countdownContainer = document.getElementById('countdownItems');
             
             if (upcomingEvents.length === 0) {
                 countdownContainer.innerHTML = '<div class="countdown-item">🎊 本学期所有任务已完成！</div>';
             } else {
-                countdownContainer.innerHTML = upcomingEvents.map(event => {
+                countdownContainer.innerHTML = upcomingEvents.map((event, index) => {
                     const isUrgent = event.diffDays <= 3;
                     const emoji = event.type === 'deadline' ? '⚠️' : '📅';
                     const typeText = event.type === 'deadline' ? '截止' : '活动';
                     
-                    return `
-                        <div class="countdown-item">
-                            <div>
-                                <div style="font-size: 1.1em; font-weight: bold;">${emoji} ${event.title}</div>
-                                <div class="countdown-label">${typeText} · ${event.date}</div>
+                    const detailsHTML = event.details ? `
+                        <div class="countdown-details" id="details-${index}">
+                            <div class="detail-info">
+                                <strong>📍 集合地点：</strong>${event.details.location}<br>
+                                <strong>⏰ 集合时间：</strong>${event.details.time}<br>
+                                <strong>💡 备注：</strong>${event.details.note}
                             </div>
-                            <div class="countdown-days ${isUrgent ? 'urgent' : ''}">
-                                ${event.diffDays === 0 ? '今天!' : event.diffDays + '天'}
+                        </div>
+                    ` : '';
+                    
+                    const expandIcon = event.details ? '<span class="expand-icon" id="icon-' + index + '">▼</span>' : '';
+                    
+                    return `
+                        <div class="countdown-item" onclick="toggleDetails(${index}, ${event.details ? true : false})">
+                            <div style="flex: 1;">
+                                <div class="countdown-item-header">
+                                    <div>
+                                        <div style="font-size: 1.1em; font-weight: bold;">${emoji} ${event.title}${expandIcon}</div>
+                                        <div class="countdown-label">${typeText} · ${event.date}</div>
+                                    </div>
+                                    <div class="countdown-days ${isUrgent ? 'urgent' : ''}">
+                                        ${event.diffDays === 0 ? '今天!' : event.diffDays + '天'}
+                                    </div>
+                                </div>
+                                ${detailsHTML}
                             </div>
                         </div>
                     `;
                 }).join('');
+            }
+        }
+
+        // 切换详情显示
+        function toggleDetails(index, hasDetails) {
+            if (!hasDetails) return;
+            
+            const detailsEl = document.getElementById(`details-${index}`);
+            const iconEl = document.getElementById(`icon-${index}`);
+            
+            if (detailsEl && iconEl) {
+                detailsEl.classList.toggle('expanded');
+                iconEl.classList.toggle('rotated');
             }
         }
 
